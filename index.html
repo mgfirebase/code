@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>IIT</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="me" href="https://www.blogger.com/profile/02300451903905074101" />
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+</head>
+<body>
+
+  <style>
+
+    body{
+    margin: 10px;
+    padding: 5px;
+}
+a{
+    text-decoration: none;
+}
+.body{
+    padding: 20px;
+}
+.filter{
+    margin-bottom: 20px;
+}
+.hide{
+    display: none;
+}
+.body::-webkit-scrollbar{
+    width: 0px;
+}
+@media only screen and (max-width:400px) {
+    .body{
+        overflow: scroll;
+        padding: 0px;
+    }
+    body{
+      margin:0px;
+        padding: 0px;
+    }
+    table{
+        padding-bottom: 0px;
+    }
+}
+  </style>
+  <div class="body">
+   
+    <table class="table table-sm table-bordered text-center table-responsive bg-dark">
+        <thead>
+        <tr>
+          <th scope="col" id="edit">#</th>
+          <th scope="col" class="done">Ch Name</th>
+          <th scope="col" class="reset">Total Videos</th>
+          <th scope="col">Avg Length</th>
+          <th scope="col">Total Length</th>
+        </tr>
+        </thead>
+        <tbody> 
+        </tbody>
+    </table>
+  </div>
+
+<script>
+    var playlists = [
+    {
+        "name": "Sigma Web Development",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&feature=shared",
+        "video": 131,
+        "avg": "24 minutes, 1 second",
+        "total": "2 days, 4 hours, 26 minutes, 29 seconds",
+        "type": ["web"]
+    },
+    {
+        "name": "Python For Beginners",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg&feature=shared",
+        "video": 100,
+        "avg": "10 minutes, 46 seconds",
+        "total": "17 hours, 57 minutes, 12 seconds",
+        "type": ["python"]
+    },
+    {
+        "name": "Javascript For Beginners",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR&feature=shared",
+        "video": 103,
+        "avg": "12 minutes, 35 seconds",
+        "total": "21 hours, 36 minutes, 25 seconds",
+        "type": ["javascript", "web"]
+    },
+    {
+        "name": "Next JS",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agtWvR_TZdb_r0dNI8-lDwG&feature=shared",
+        "video": 79,
+        "avg": "19 minutes, 47 seconds",
+        "total": "1 day, 2 hours, 2 minutes, 55 seconds",
+        "type": ["mern", "web"]
+    },
+    {
+        "name": "TailWind CSS",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ahwFDuExCpPFHAK829Wto2O&feature=shared",
+        "video": 16,
+        "avg": "19 minutes, 24 seconds",
+        "total": "5 hours, 10 minutes, 39 seconds",
+        "type": ["css", "web"]
+    },
+    {
+        "name": "React JS",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt&feature=shared",
+        "video": 78,
+        "avg": "14 minutes, 4 seconds",
+        "total": "18 hours, 17 minutes, 22 seconds",
+        "type": ["mern", "web"]
+    },
+    {
+        "name": "Server Configuration",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9aiBNXUisDdSmfNbsKq407XC&feature=shared",
+        "video": 13,
+        "avg": "16 minutes, 1 second",
+        "total": "3 hours, 28 minutes, 20 seconds",
+        "type": ["server"]
+    },
+    {
+        "name": "Java",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agS67Uits0UnJyrYiXhDS6q&feature=shared",
+        "video": 113,
+        "avg": "15 minutes, 14 seconds",
+        "total": "1 day, 4 hours, 42 minutes, 27 seconds",
+        "type": ["java"]
+    },
+    {
+        "name": "DSA",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi&feature=shared",
+        "video": 92,
+        "avg": "20 minutes, 46 seconds",
+        "total": "1 day, 7 hours, 51 minutes, 40 seconds",
+        "type": ["c"]
+    },
+    {
+        "name": "PHP",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&feature=shared",
+        "video": 82,
+        "avg": "17 minutes, 6 seconds",
+        "total": "23 hours, 22 minutes, 41 seconds",
+        "type": ["php", "web"]
+    },
+    {
+        "name": "C++",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&feature=shared",
+        "video": 74,
+        "avg": "17 minutes, 45 seconds",
+        "total": "21 hours, 53 minutes, 44 seconds",
+        "type": ["c++"]
+    },
+    {
+        "name": "Web Development for Beginners",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzPyItg&feature=shared",
+        "video": 103,
+        "avg": "20 minutes, 13 seconds",
+        "total": "1 day, 10 hours, 43 minutes, 16 seconds",
+        "type": ["web", "old"]
+    },
+    {
+        "name": "Git",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agwhy658ZPA0MTStKUJTWPi&feature=shared",
+        "video": 19,
+        "avg": "16 minutes, 1 second",
+        "total": "5 hours, 4 minutes, 36 seconds",
+        "type": ["git"]
+    },
+    {
+        "name": "Android studio",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9aiL0kysYlfSOUgY5rNlOhUd&feature=shared",
+        "video": 34,
+        "avg": "21 minutes, 50 seconds",
+        "total": "12 hours, 22 minutes, 23 seconds",
+        "type": ["android"]
+    },
+    {
+        "name": "Javascript tutorial",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ajyk081To1Cbt2eI5913SsL&feature=shared",
+        "video": 66,
+        "avg": "23 minutes, 53 seconds",
+        "total": "1 day, 2 hours, 17 minutes, 9 seconds",
+        "type": ["javascript", "web", "old"]
+    },
+    {
+        "name": "C",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9aiXlHcLx-mDH1Qul38wD3aR&feature=shared",
+        "video": 76,
+        "avg": "19 minutes, 47 seconds",
+        "total": "1 day, 2 hours, 2 minutes, 55 seconds",
+        "type": ["c"]
+    },
+    {
+        "name": "Django",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9&feature=shared",
+        "video": 102,
+        "avg": "13 minutes, 35 seconds",
+        "total": "23 hours, 5 minutes, 30 seconds",
+        "type": ["python", "web"]
+    },
+    {
+        "name": "Python GUI",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ajLcqRcj4PoEihkukF_OTzA&feature=shared",
+        "video": 31,
+        "avg": "11 minutes, 30 seconds",
+        "total": "5 hours, 56 minutes, 31 seconds",
+        "type": ["python", "desktop"]
+    },
+    {
+        "name": "Python tutorial for absolute beginners",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME&feature=shared",
+        "video": 129,
+        "avg": "16 minutes, 3 seconds",
+        "total": "1 day, 10 hours, 30 minutes, 58 seconds",
+        "type": ["python","old"]
+    },
+    {
+        "name": "Python Game Development",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ailUQcxEPZrWgDoL36BtPYb&feature=shared",
+        "video": 8,
+        "avg": "46 seconds",
+        "total": "3 hours, 4 minutes, 21 seconds",
+        "type": ["python", "game"]
+    },
+    {
+        "name": "Machine Learning",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ai6fAMHp-acBmJONT7Y4BSG&feature=shared",
+        "video": 23,
+        "avg": "25 minutes, 28 seconds",
+        "total": "9 hours, 45 minutes, 50 seconds",
+        "type": ["python"]
+    },
+    {
+        "name": "Data Science and Big Data",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agK8pojo23OHiNz3Jm6VQCH&feature=shared",
+        "video": 14,
+        "avg": "12 minutes, 53 seconds",
+        "total": "3 hours, 31 seconds",
+        "type": ["python", "data science"]
+    },
+    {
+        "name": "Git and GitHub",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ahVQekD7ePHmnirTePXwIln&feature=shared",
+        "video": 11,
+        "avg": "7 minutes, 59 seconds",
+        "total": "1 hour, 27 minutes, 51 seconds",
+        "type": ["github","old"]
+    },
+    {
+        "name": "Flask",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9agAiWp6Y41ueUKx1VcTRxmf&feature=shared",
+        "video": 25,
+        "avg": "16 minutes, 43 seconds",
+        "total": "6 hours, 58 minutes",
+        "type": ["python", "web"]
+    },
+    {
+        "name": "Intermediate / Advanced Python",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9aiJWQ7VhY712fuimEpQZYp4&feature=shared",
+        "video": 13,
+        "avg": "10 minutes, 3 seconds",
+        "total": "2 hours, 10 minutes, 39 seconds",
+        "type": ["python"]
+    },
+    {
+        "name": "Object Oriented Programming in Python",
+        "link": "https://youtube.com/playlist?list=PLu0W_9lII9ahfRrhFcoB-4lpp9YaBmdCP&feature=shared",
+        "video": 9,
+        "avg": "7 minutes, 51 seconds",
+        "total": "1 hour, 10 minutes, 46 seconds",
+        "type": ["python"]
+    }
+   ]
+
+var totalvideos = 0;
+var totalavg = 0;
+var totallen = 0;
+const tableBody = document.querySelector("tbody");
+var selected = [];
+var timecontant = 1;
+
+function findAllUniqueTags(playlists) {
+    let uniqueTags = new Set();
+    playlists.forEach(playlist => {
+        playlist.type.forEach(tag => uniqueTags.add(tag));
+    });
+    return Array.from(uniqueTags);
+}
+
+function filterPlaylistsByTag(tag) {
+    let filteredPlaylists = playlists.filter(playlist => playlist.type.includes(tag));
+    return filteredPlaylists;
+}
+
+function populateTable(data){ 
+totalvideos = 0; 
+totalavg = 0;
+ totallen = 0; 
+ var i = 1; tableBody.innerHTML = ""; 
+ 
+ data.forEach(playlist => {
+const row = document.createElement("tr"); row.setAttribute("sub",playlist.sub); row.setAttribute("class",playlist.class); row.setAttribute("topic",playlist.topic);
+var name;
+ if(playlist.type.includes("old") == true){
+     name = playlist.name + " (Old)";
+ }
+ else{
+     name = playlist.name;
+ }
+ row.innerHTML = "<td><span class='no'>" + i + "</span><input type='checkbox' onclick='check(this)' data='"+playlist.name+"' class='hide form-check-input is-primary'></td>"; 
+ i++; 
+ row.innerHTML += "<td><a href='" + playlist.link + "' target='_blank'>" + name + "</a></td>";
+ row.innerHTML += "<td>" + playlist.video + "</td>";
+ row.innerHTML += "<td>" + convertSecondsToEnglish(timeStringToSeconds(playlist.avg)/timecontant) + "</td>"; row.innerHTML += "<td>" + convertSecondsToEnglish(timeStringToSeconds(playlist.total)/timecontant) + "</td>"; 
+ totalvideos += playlist.video; 
+ totalavg += timeStringToSeconds(playlist.avg);
+  totallen += timeStringToSeconds(playlist.total);
+   tableBody.appendChild(row);
+   });
+   
+var tbox = document.createElement('tr'); tbox.innerHTML = '<td>#</td><td>Total</td><td>'+totalvideos+'</td><td>'+convertSecondsToEnglish((totallen/totalvideos)/timecontant)+'</td><td>'+convertSecondsToEnglish(totallen/timecontant)+'</td>'; tableBody.appendChild(tbox); selected = [];
+}
+
+populateTable(playlists);
+
+document.querySelector('#edit').addEventListener('click',function(){
+  const checkbox = document.querySelectorAll('.form-check-input');
+  const spans = document.querySelectorAll('.no');
+
+  checkbox.forEach(checkbox => {
+    checkbox.classList.toggle('hide');
+  })
+  spans.forEach(spans => {
+    spans.classList.toggle('hide');
+  })
+
+})
+
+function check(e){
+    if(e.checked){selected.push(e.getAttribute('data'))}
+    else{
+      var indextoremove = selected.indexOf(e.getAttribute('data'));
+      selected.splice(indextoremove,1)
+    }
+    console.log(selected)
+}
+
+
+var donebtn = document.querySelector('.done');
+donebtn.addEventListener('click',function(){
+  if(selected.length != 0){
+    var filterdata = playlists.filter(data => selected.includes(data.name));
+    populateTable(filterdata);
+  }
+})
+
+document.querySelector('.reset').addEventListener('click',function(){
+  populateTable(playlists);
+})
+
+function timeStringToSeconds(timeString) {
+  const timeParts = formatTimeString(timeString);
+  let totalSeconds = 0;
+  let currentNumber = 0;
+  let multiplier = 1;
+
+  const unitMultipliers = {
+      'hr': 3600,
+      'hour': 3600,
+      'hours': 3600,
+      'h': 3600,
+      'min': 60,
+      'minute': 60,
+      'minutes': 60,
+      'm': 60,
+      's': 1,
+      'sec': 1,
+      'second': 1,
+      'seconds': 1,
+      'd': 86400,
+      'day': 86400,
+      'days': 86400
+  };
+
+  for (let i = 0; i < timeParts.length; i++) {
+      const part = timeParts[i];
+
+      if (!isNaN(part)) {
+          currentNumber = parseInt(part);
+      } else if (unitMultipliers[part]) {
+          multiplier = unitMultipliers[part];
+          totalSeconds += currentNumber * multiplier;
+          currentNumber = 0;
+          multiplier = 1;
+      }
+  }
+
+  return totalSeconds;
+}
+
+function formatTimeString(timeString) {
+  const cleanedString = timeString.replace(/[^0-9a-zA-Z\s]+/g, '');
+  const formattedArray = cleanedString.match(/\d+|[a-zA-Z]+/g);
+  return formattedArray;
+}
+
+
+function convertSecondsToEnglish(seconds) {
+  const days = Math.floor(seconds / (3600 * 24));
+  const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+  
+  let timeString = '';
+  
+  if (days > 0) {
+      timeString += days + ' d ';
+  }
+  
+  if (hours > 0) {
+      timeString += hours + ' hr ';
+  }
+  
+  if (minutes > 0) {
+      timeString += minutes + ' min ';
+  }
+  
+  if (seconds < 60) {
+      timeString += remainingSeconds + ' sec';
+  }
+  
+  return timeString.trim();
+}
+ 
+</script>
+</body>
+</html>
